@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <zp-card [collapsable]="true" >
+        <zp-card-header>
+          header
+        </zp-card-header>
+        <zp-card-body>
+          body
+        </zp-card-body>
+      </zp-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <zp-accordion >
+        <zp-card type="primary" [collapsable]="true" >
+          <zp-card-header>
+            action-button
+            <zp-action-button type="primary" [actions]="actions"><i class="fa fa-user"></i>点击我啊</zp-action-button>
+          </zp-card-header>
+          <zp-card-body>
+            <zp-action-button type="primary" [actions]="actions"><i class="fa fa-user"></i>点击我啊</zp-action-button>
+            <div class="modal-demo">
+              <button class="btn btn-default" (click)="openModal();">Open modal!</button>
+            </div>
+          </zp-card-body>
+        </zp-card>
+        <zp-card type="primary" [collapsable]="true" >
+          <zp-card-header>
+            modal
+          </zp-card-header>
+          <zp-card-body>
+            <div class="modal-demo">
+              <button class="btn btn-default" (click)="openModal();">Open modal!</button>
+            </div>
+          </zp-card-body>
+        </zp-card>
+        <zp-card type="primary" [collapsable]="true" >
+          <zp-card-header>
+            modal
+          </zp-card-header>
+          <zp-card-body>
+            <div class="dialog-demo">
+              <button class="btn btn-default" (click)="alert()">Alert</button>
+              <button class="btn btn-default" (click)="confirm()">Confirm</button>
+              <button class="btn btn-default" (click)="prompt()">Prompt</button>
+              <button class="btn btn-default" (click)="promptWithTemplate()">Prompt with template</button>
+            </div>
+            <ng-template #selectPromptTemplate let-option="option" let-formGroup="formGroup">
+              <select type="text" class="form-control" id="promptValue" name="promptValue"
+                      [formControl]="formGroup.controls.promptValue">
+                <option value="">Please select</option>
+                <option value="ZH-CN">China</option>
+                <option value="EN-US">America</option>
+                <option value="EN">England</option>
+              </select>
+            </ng-template>
+          </zp-card-body>
+        </zp-card>
+
+      </zp-accordion>
+    </div>
+  </div>
+</div>
+
