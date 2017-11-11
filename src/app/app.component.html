@@ -1,66 +1,92 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <zp-card [collapsable]="true" >
-        <zp-card-header>
-          header
-        </zp-card-header>
-        <zp-card-body>
-          body
-        </zp-card-body>
-      </zp-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <zp-accordion >
-        <zp-card type="primary" [collapsable]="true" >
-          <zp-card-header>
-            action-button
-            <zp-action-button type="primary" [actions]="actions"><i class="fa fa-user"></i>点击我啊</zp-action-button>
-          </zp-card-header>
-          <zp-card-body>
-            <zp-action-button type="primary" [actions]="actions"><i class="fa fa-user"></i>点击我啊</zp-action-button>
-            <div class="modal-demo">
-              <button class="btn btn-default" (click)="openModal();">Open modal!</button>
-            </div>
-          </zp-card-body>
-        </zp-card>
-        <zp-card type="primary" [collapsable]="true" >
-          <zp-card-header>
-            modal
-          </zp-card-header>
-          <zp-card-body>
-            <div class="modal-demo">
-              <button class="btn btn-default" (click)="openModal();">Open modal!</button>
-            </div>
-          </zp-card-body>
-        </zp-card>
-        <zp-card type="primary" [collapsable]="true" >
-          <zp-card-header>
-            modal
-          </zp-card-header>
-          <zp-card-body>
-            <div class="dialog-demo">
-              <button class="btn btn-default" (click)="alert()">Alert</button>
-              <button class="btn btn-default" (click)="confirm()">Confirm</button>
-              <button class="btn btn-default" (click)="prompt()">Prompt</button>
-              <button class="btn btn-default" (click)="promptWithTemplate()">Prompt with template</button>
-            </div>
-            <ng-template #selectPromptTemplate let-option="option" let-formGroup="formGroup">
-              <select type="text" class="form-control" id="promptValue" name="promptValue"
-                      [formControl]="formGroup.controls.promptValue">
-                <option value="">Please select</option>
-                <option value="ZH-CN">China</option>
-                <option value="EN-US">America</option>
-                <option value="EN">England</option>
-              </select>
-            </ng-template>
-          </zp-card-body>
-        </zp-card>
+<lte-wrapper>
+  <lte-header>
+    <a href="index2.html" class="logo">
+      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <a (click)="lteSidebar.toggle()" href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+    </nav>
+  </lte-header>
+  <lte-sidebar (onCollapse)="onListen($event)" #lteSidebar [collapse]="true" [collapsed]="false">
+    <lte-sidebar-menu (onExpand)="onListen($event)" [menuItems]="menuItems" [isAccordion]="true"></lte-sidebar-menu>
+  </lte-sidebar>
+  <lte-content-wrapper>
+    <lte-content-header>
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </lte-content-header>
+    <lte-content-body>
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
 
-      </zp-accordion>
-    </div>
-  </div>
-</div>
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
 
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+    </lte-content-body>
+  </lte-content-wrapper>
+</lte-wrapper>

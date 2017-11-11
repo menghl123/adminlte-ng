@@ -1,30 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import {AppComponent, ModalTestComponent} from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent,} from './app.component';
 import {RouterModule} from '@angular/router';
-import {ZeptoModule} from './components/zepto.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ROUTER_CONFIG} from './ROUTER_CONFIG.route';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {AdminlteModule} from './components/adminlte.module';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ModalTestComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTER_CONFIG),
-    ZeptoModule.forRoot(),
+    AdminlteModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalTestComponent]
+  entryComponents: [],
 })
-export class AppModule { }
+export class AppModule {
+}
