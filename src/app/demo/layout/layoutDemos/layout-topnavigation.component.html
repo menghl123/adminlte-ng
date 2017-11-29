@@ -1,0 +1,53 @@
+<lte-wrapper [type]="'topNavigation'">
+  <lte-header>
+    <nav class="navbar navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a [routerLink]="'/index'" class="navbar-brand"><b>Admin</b>LTE</a>
+          <button (click)="navbarMenu.toggle()" type="button" class="navbar-toggle collapsed">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <lte-navbar-menu #navbarMenu [menuItems]="menuItems" [position]="'right'"></lte-navbar-menu>
+        <lte-navbar-menu #navbarMenu [menuItems]="menuItems"></lte-navbar-menu>
+      </div>
+    </nav>
+  </lte-header>
+  <lte-content-wrapper>
+    <div class="container">
+      <lte-breadcrumb [pageDescription]="pageInfo?.pageDescription" [pageTitle]="pageInfo?.pageTitle"
+                      [menuItems]="breadcrumbsMenuItems"></lte-breadcrumb>
+      <lte-content-body>
+        <pre class="language-markup" lteCode>
+&lt;lte-wrapper [type]="'topNavigation'"&gt;
+  &lt;lte-header&gt;
+    &lt;nav class="navbar navbar-static-top"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="navbar-header"&gt;
+          &lt;a [routerLink]="'/index'" class="navbar-brand"&gt;&lt;b&gt;Admin&lt;/b&gt;LTE&lt;/a&gt;
+          &lt;button (click)="navbarMenu.toggle()" type="button" class="navbar-toggle collapsed"&gt;
+            &lt;i class="fa fa-bars"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;lte-navbar-menu #navbarMenu [menuItems]="menuItems" [position]="'right'"&gt;&lt;/lte-navbar-menu&gt;
+        &lt;lte-navbar-menu #navbarMenu [menuItems]="menuItems"&gt;&lt;/lte-navbar-menu&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/lte-header&gt;
+  &lt;lte-content-wrapper&gt;
+    &lt;div class="container"&gt;
+      &lt;lte-breadcrumb [pageDescription]="pageInfo?.pageDescription" [pageTitle]="pageInfo?.pageTitle"
+                      [menuItems]="breadcrumbsMenuItems"&gt;&lt;/lte-breadcrumb&gt;
+      &lt;lte-content-body&gt;
+        &lt;pre class="language-markup" lteCode&gt;
+          code ...
+        &lt;/pre&gt;
+      &lt;/lte-content-body&gt;
+    &lt;/div&gt;
+  &lt;/lte-content-wrapper&gt;
+&lt;/lte-wrapper&gt;
+        </pre>
+      </lte-content-body>
+    </div>
+  </lte-content-wrapper>
+</lte-wrapper>

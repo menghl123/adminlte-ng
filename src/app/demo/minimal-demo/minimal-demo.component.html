@@ -1,0 +1,8 @@
+<input type="text" class="form-control" name="language" id="languageFromSource" [minLength]="0"
+       [(ngModel)]="selectItem1" lteAutoComplete [dataSource]="languages" />
+<br><br>
+<lte-mutiple-auto-complete id="languageTags" [(ngModel)]="mutipleItems" name="languageTags"
+                          [minLength]="0"
+                          [onSearch]="onSearchObject" [appendBody]="true"></lte-mutiple-auto-complete>
+
+<pre>{{mutipleItems | json}}</pre>

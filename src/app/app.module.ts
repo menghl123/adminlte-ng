@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {AppComponent,} from './app.component';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ROUTER_CONFIG} from './ROUTER_CONFIG.route';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminlteModule} from './components/adminlte.module';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {ROUTER_CONFIG} from './app.router';
 
 @NgModule({
   declarations: [
