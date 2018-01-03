@@ -1,9 +1,9 @@
 import {CommonModule} from '@angular/common';
-import {Component, EventEmitter, Input, NgModule, Output, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnInit, Output} from '@angular/core';
 import {MenuItem} from '../common/model';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {AdminlteNGConfig} from '../adminlte.config';
-import {trigger, state, style, transition, animate} from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'lte-sidebar-menu',
@@ -15,28 +15,28 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
       <ng-template #treeview let-item="item">
         <li *ngIf="item?.isHeader" class="header">{{item?.label}}</li>
         <li (click)="itemClick(item)" *ngIf="!item?.isHeader" class="treeview"
-            [ngClass]="{'menu-open':item.$expand}"  routerLinkActive="active"> 
-          <ng-container *ngIf="!item.children">
+            [ngClass]="{'menu-open':item.$expand,'active':isActive(item)}">
+          <ng-container *ngIf="!item.children || item.children.length === 0">
             <a [routerLink]="item?.routerLink">
               <i *ngIf="item.icon" class="fa {{item?.icon}}"></i>
               <span>{{item?.label}}</span>
               <span *ngIf="item.children" class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i *ngIf="item.children && item.children.length !== 0" class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
           </ng-container>
-          <ng-container *ngIf="item.children">
+          <ng-container *ngIf="item.children && item.children.length !== 0">
             <a>
               <i *ngIf="item.icon" class="fa {{item?.icon}}"></i>
               <span>{{item?.label}}</span>
               <span *ngIf="item.children" class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <i *ngIf="item.children && item.children.length !== 0" class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
           </ng-container>
-          <ul  *ngIf="item.children" class="treeview-menu"
-               [@submenu]="item.$expand ? 'visible' : 'hidden'"
-               [ngStyle]="{'display':'block','overflow':'hidden'}">
+          <ul *ngIf="item.children" class="treeview-menu"
+              [@submenu]="item.$expand ? 'visible' : 'hidden'"
+              [ngStyle]="{'display':'block','overflow':'hidden'}">
             <ng-container *ngFor="let menuItem of item.children">
               <ng-container *ngTemplateOutlet="treeview;context:{item:menuItem}"></ng-container>
             </ng-container>
@@ -58,15 +58,26 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
     ])
   ]
 })
-export class LteSidebarMenu {
+export class LteSidebarMenu implements OnInit {
   @Input()
   menuItems: MenuItem[];
   @Input()
   isAccordion: boolean;
   @Output()
   onExpand: EventEmitter<MenuItem> = new EventEmitter();
-  constructor(private adminlteNGConfig: AdminlteNGConfig, _viewContainerRef: ViewContainerRef) {
+
+  constructor(private adminlteNGConfig: AdminlteNGConfig, private router: Router) {
     this.isAccordion = this.adminlteNGConfig.sidebarMenu.isAccordion;
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.menuItems.forEach((item) => {
+        if (item && item.children) {
+          this.childrenActive(item, item.children);
+        }
+      });
+    }, 1000);
   }
 
   itemClick(menuItem) {
@@ -79,9 +90,9 @@ export class LteSidebarMenu {
         }
         menuItem.$expand = true;
       }
-      event.preventDefault();
-      event.stopPropagation();
     }
+    event.preventDefault();
+    event.stopPropagation();
     this.onExpand.emit(menuItem);
   }
 
@@ -92,6 +103,24 @@ export class LteSidebarMenu {
       });
     }
   }
+
+  isActive(item: MenuItem) {
+    if (item.routerLink && this.router.url.indexOf(item.routerLink) !== -1) {
+      return true;
+    }
+  }
+
+  private childrenActive(item, children) {
+    children.forEach($item => {
+      if ($item.routerLink && this.router.url.indexOf($item.routerLink) !== -1) {
+        item.$expand = true;
+      }
+      if ($item.children) {
+        this.childrenActive($item, $item.children);
+      }
+    });
+  }
+
 }
 
 @NgModule({

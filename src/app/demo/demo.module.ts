@@ -17,6 +17,7 @@ import { SplitButtonDemoComponent } from './split-button-demo/split-button-demo.
 import { AlerBoxDemoComponent } from './aler-box-demo/aler-box-demo.component';
 import { ProgressBarDemoComponent } from './progress-bar-demo/progress-bar-demo.component';
 import { CarouselDemoComponent } from './carousel-demo/carousel-demo.component';
+import {ModalDemoComponent, ModalTestComponent, TestComponent} from './modal-demo/modal-demo.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,25 @@ import { CarouselDemoComponent } from './carousel-demo/carousel-demo.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  declarations: [DemoComponent, LayoutComponent, LayoutTopnavigationComponent, TabDemoComponent, BoxDemoComponent, AccordionDemoComponent, MinimalDemoComponent, SplitButtonDemoComponent, AlerBoxDemoComponent, ProgressBarDemoComponent, CarouselDemoComponent]
+  declarations: [
+    DemoComponent,
+    LayoutComponent,
+    LayoutTopnavigationComponent,
+    TabDemoComponent,
+    BoxDemoComponent,
+    AccordionDemoComponent,
+    MinimalDemoComponent,
+    SplitButtonDemoComponent,
+    AlerBoxDemoComponent,
+    ProgressBarDemoComponent,
+    CarouselDemoComponent,
+    ModalDemoComponent,
+    ModalTestComponent,
+    TestComponent
+  ],
+  entryComponents: [
+    ModalTestComponent,TestComponent
+  ]
 })
 export class DemoModule {
 }

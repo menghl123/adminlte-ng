@@ -29,11 +29,14 @@ export class LteWrapper implements OnInit {
 
   ngOnInit(): void {
     this.domHandler.changeSkin(this.skin);
+    this.domHandler.removeClass(this.documentRef.body, 'layout-top-nav');
+    this.domHandler.removeClass(this.documentRef.body, 'layout-boxed');
+    this.domHandler.removeClass(this.documentRef.body, 'fixed');
+    this.domHandler.removeClass(this.documentRef.body, 'sidebar-mini');
     let classStyle;
     if (this.type === 'topNavigation') {
       classStyle = 'hold-transition layout-top-nav';
     } else if (this.type === 'boxed') {
-      classStyle = 'hold-transition layout-boxed sidebar-mini';
       classStyle = 'hold-transition layout-boxed sidebar-mini';
     } else if (this.type === 'fixed') {
       classStyle = 'hold-transition fixed sidebar-mini';

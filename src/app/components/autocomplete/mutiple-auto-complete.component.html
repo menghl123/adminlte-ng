@@ -1,5 +1,5 @@
 <label for="mutiple-label-auto-complete-{{id}}" class="mutiple-label-auto-complete {{cssClass}}">
-  <ul>
+  <ul >
     <li *ngFor="let item of mutipleItems">
               <span class="label label-info" [ngClass]="{disabled: disabled}">
                  <i aria-hidden="true" class="label-close" (click)="removeLabel(item)">&times;</i>{{formatter(item)}}

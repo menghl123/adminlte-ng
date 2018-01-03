@@ -2,15 +2,13 @@ import {Component, EventEmitter, Host, Input, NgModule, OnInit, Optional, Output
 import {CommonModule} from '@angular/common';
 import {AdminlteNGConfig} from '../adminlte.config';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {Subscription} from 'rxjs/Subscription';
-import {LteAccordion} from '../accordion/accordion';
 import {BoxGroup} from '../accordion/boxGroup';
 
 @Component({
   selector: 'lte-box',
   template: `
     <div class="box box-{{type}}" [ngStyle]="{'margin-bottom':inAccordion ? '5px' : '15px'}">
-      <div class="box-header" [ngClass]="{'with-border':withBorder}" (click)="toggle()">
+      <div class="box-header" *ngIf="!noHeader" [ngClass]="{'with-border':withBorder}" (click)="toggle()">
         <i *ngIf="icon" class="fa fa-{{icon}}"></i>
         <h3 class="box-title">{{title}}</h3>
         <i *ngIf="collapse" class="pull-right fa fa-{{collapsed ? 'plus' : 'minus'}}"></i>
@@ -37,6 +35,8 @@ import {BoxGroup} from '../accordion/boxGroup';
 })
 export class LteBox implements OnInit {
   @Input()
+  noHeader: boolean;
+  @Input()
   collapse: boolean;
   @Input()
   collapsed: boolean;
@@ -59,6 +59,7 @@ export class LteBox implements OnInit {
     this.inAccordion = <any>this.adminlteNGConfig.box.inAccordion;
     this.collapse = this.adminlteNGConfig.box.collapse;
     this.collapsed = this.adminlteNGConfig.box.collapsed;
+    this.noHeader = this.adminlteNGConfig.box.noHeader;
   }
 
   ngOnInit(): void {

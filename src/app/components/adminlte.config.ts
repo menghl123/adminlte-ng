@@ -25,11 +25,12 @@ export class AdminlteNGConfig {
   };
 
   box = {
-    withBorder: false,
+    withBorder: true,
     type: 'default',
     inAccordion: false,
     collapse: false,
     collapsed: false,
+    noHeader: false,
   };
 
   accordion: {
@@ -79,4 +80,38 @@ export class AdminlteNGConfig {
     animationDuration: 600
   };
 
+  modal = {
+    animation: true
+  };
+
+  pagination = {
+    boundary: true,
+    pageSize: 10,
+    maxItems: 5,
+    size: '', // '' | 'lg' | 'sm'
+    button: {
+      first: 'First',
+      last: 'Last',
+      pre: 'Previous',
+      next: 'Next'
+    }
+  };
+
+  dialog = {
+    button: {
+      yes: 'Yes',
+      btnYesType: 'primary',
+      no: 'No',
+      btnNoType: 'warning'
+    }
+  };
+
+  treeView = {
+    textField: 'label',
+    valueField: 'id',
+    leafIcon: 'fa fa-leaf',
+    expendIcon: 'fa fa-angle-down',
+    collapseIcon: 'fa fa-angle-right',
+    loadingIcon: 'fa fa-cloud-download',
+  };
 }

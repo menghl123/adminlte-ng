@@ -17,6 +17,16 @@ import {SplitButtonModule} from './button/splitButton';
 import {AlertBoxModule} from './alert-box/alert-box';
 import {ProgressBarModule} from './progressBar/progressBar';
 import {CarouselModule} from './carousel/carousel';
+import {ModalModule} from './modal/modal.module';
+import {ModalService} from './modal/modal.service';
+import {PaginationModule} from './pagination/pagination.module';
+import {OverlayModule} from './overlay/overlay.module';
+import {OverlayService} from './overlay/overlay.service';
+import {DialogModule} from './dialog/dialog.module';
+import {DialogService} from './dialog/dialog.service';
+import {DraggableModule} from './draggable/draggable.module';
+import {TreeViewModule} from './tree-view/tree-view.module';
+import {TreeViewService} from './tree-view/tree-view.service';
 
 
 @NgModule({
@@ -33,7 +43,13 @@ import {CarouselModule} from './carousel/carousel';
     SplitButtonModule,
     AlertBoxModule,
     ProgressBarModule,
-    CarouselModule
+    CarouselModule,
+    ModalModule,
+    PaginationModule,
+    OverlayModule,
+    DialogModule,
+    DraggableModule,
+    TreeViewModule
   ],
   exports: [
     LayoutModule,
@@ -47,7 +63,13 @@ import {CarouselModule} from './carousel/carousel';
     SplitButtonModule,
     AlertBoxModule,
     ProgressBarModule,
-    CarouselModule
+    CarouselModule,
+    ModalModule,
+    PaginationModule,
+    OverlayModule,
+    DialogModule,
+    DraggableModule,
+    TreeViewModule
   ],
   declarations: []
 })
@@ -58,7 +80,12 @@ export class AdminlteModule {
       ngModule: AdminlteModule,
       providers: [
         ...COMMON_SERVICES,
-        {provide: AdminlteNGConfig, useClass: AdminlteNGConfig}
+        {provide: AdminlteNGConfig, useClass: AdminlteNGConfig},
+        {provide: ModalService, useClass: ModalService},
+        {provide: PositionService, useClass: PositionService},
+        { provide: DialogService, useClass: DialogService },
+        { provide: OverlayService, useClass: OverlayService },
+        { provide: TreeViewService, useClass: TreeViewService }
       ]
     };
   }
@@ -68,5 +95,4 @@ export const COMMON_SERVICES: Provider[] = [
   {provide: DocumentRef, useClass: DocumentRef},
   {provide: WindowRef, useClass: WindowRef},
   {provide: DomHandler, useClass: DomHandler},
-  {provide: PositionService, useClass: PositionService}
 ];

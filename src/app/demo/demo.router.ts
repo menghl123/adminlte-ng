@@ -10,6 +10,7 @@ import {SplitButtonDemoComponent} from './split-button-demo/split-button-demo.co
 import {AlerBoxDemoComponent} from './aler-box-demo/aler-box-demo.component';
 import {ProgressBarDemoComponent} from './progress-bar-demo/progress-bar-demo.component';
 import {CarouselDemoComponent} from './carousel-demo/carousel-demo.component';
+import {ModalDemoComponent} from './modal-demo/modal-demo.component';
 
 export const ROUTER_CONFIG: Routes = [
   {
@@ -23,6 +24,7 @@ export const ROUTER_CONFIG: Routes = [
     {path: 'alerBox', component: AlerBoxDemoComponent},
     {path: 'progressBar', component: ProgressBarDemoComponent},
     {path: 'carousel', component: CarouselDemoComponent},
+    {path: 'modal', component: ModalDemoComponent},
   ]
   },
   {

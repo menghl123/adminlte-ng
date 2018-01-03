@@ -5,7 +5,7 @@ import {AdminlteNGConfig} from '../adminlte.config';
 @Component({
   selector: 'lte-alert-box',
   template: `
-    <div class="alert alert-{{type}}" *ngIf="!closed">
+    <div class="alert alert-{{type}}" *ngIf="!closed" [ngStyle]="{'margin-top':'2px'}">
       <button type="button" class="close" *ngIf="closable" (click)="close()">&times;</button>
       <h4 *ngIf="showTitle" ><i class="icon fa {{iconData[type]}}"></i> Alert!</h4>
       <ng-content></ng-content>

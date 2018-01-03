@@ -10,6 +10,7 @@ import {AdminlteNGConfig} from '../adminlte.config';
   host: {
     '[class]': '"dropdown-menu "  +  (cssClass ? cssClass : "")',
     '[style.display]': 'isOpen && (source?.length || noResultItemTemplate) ? "inline-block" : "none"',
+    '[style.z-index]': '1500',
     '[@state]': 'animateState',
     '(@state.done)': 'afterVisibilityAnimation($event)'
   },
